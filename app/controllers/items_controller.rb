@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :purchase]
 
   # GET /items
   # GET /items.json
@@ -61,6 +61,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def purchase
+    # @item.stock = @item.stock - 1
+    @item.stock -= 1
+    @item.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -69,6 +75,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price)
+      params.require(:item).permit(:name, :price, :stock)
     end
 end

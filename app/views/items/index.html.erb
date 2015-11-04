@@ -1,29 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Shop Items</h1>
+    </div>
+  </div>
+  <div class="row">
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="col-md-4">
+        <div><%= image_tag "01340.jpg" %></div>
+        <ul>
+          <li><span>Name:</span><%= item.name %></li>
+          <li><span>Price:</span><%= item.price %></li>
+          <li><span>Stock:</span><%= item.stock %></li>
+        </ul>
+        <ul class="row">
+          <li class="col-md-3"><%= link_to 'purchase', purchase_item_path(item), data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></li>
+          <li class="col-md-3"><%= link_to 'Show', item, class: "btn btn-default" %></li>
+          <li class="col-md-3"><%= link_to 'Edit', edit_item_path(item), class: "btn btn-default" %></li>
+          <li class="col-md-3"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></li>
+        </ul>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+  </div>
 
 <%= link_to 'New Item', new_item_path %>
