@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/history'
+
   devise_for :users
   resources :items do
     member do

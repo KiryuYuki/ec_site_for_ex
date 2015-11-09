@@ -1,0 +1,10 @@
+%footer.footer
+  .container
+    .row
+      .col-md-6
+        %h2
+          = link_to 'Shop', root_path
+      .col-md-6
+        = link_to 'New Item', new_item_path
+        - User.all.each do |user|
+          %p= user.email

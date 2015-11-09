@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
     # @item.stock = @item.stock - 1
     @item.stock -= 1
     @item.save
+    current_user.items << @item
   end
 
   private
@@ -75,6 +76,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :stock)
+      params.require(:item).permit(:name, :price, :stock, :image)
     end
 end

@@ -1,0 +1,5 @@
+%h1 購入履歴
+%p Find me in app/views/users/history.html.erb
+- current_user.items.each do |item|
+  = item.name
+= link_to 'Back', items_path, class: "btn btn-default"

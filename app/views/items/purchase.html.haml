@@ -1,0 +1,6 @@
+%p
+  = @item.name
+  を購入をしました。
+在庫数は#{@item.stock}
+\#{link_to 'history', users_history_path, class: "btn btn-default"}
+\#{link_to 'Back', items_path, class: "btn btn-default"}

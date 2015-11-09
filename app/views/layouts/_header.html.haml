@@ -1,0 +1,18 @@
+%header.header
+  .jumbotron
+    .container
+      .row
+        .col-md-6
+          %h1
+            = link_to 'Shop', root_path
+        .col-md-6
+          - if current_user
+            %p
+              ようこそ#{current_user.email}さん
+            %p
+              あなたのidは#{current_user.id}です。
+            = link_to 'My Page', users_history_path, class: "btn btn-default"
+            = link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-danger', method: :delete
+          - else
+            = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-danger'
+            = link_to 'Sign In', new_user_session_path, class: 'btn btn-primary'
