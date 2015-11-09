@@ -1,4 +1,3 @@
-%h1 _formはフォームの部分テンプレート
 = form_for(@item) do |f|
   - if @item.errors.any?
     #error_explanation
@@ -8,21 +7,18 @@
       %ul
         - @item.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :price
-    %br/
-    = f.number_field :price
-  .field
-    = f.label :stock
-    %br/
-    = f.number_field :stock
-  .field
-    = f.label :image
-    %br/
-    = f.file_field :image
-  .actions
-    = f.submit
+  .input-group
+    .field
+      = f.label :name, class: 'input-group-addon'
+      = f.text_field :name, class: 'form-control'
+    .field
+      = f.label :price, class: 'input-group-addon'
+      = f.number_field :price, class: 'form-control'
+    .field
+      = f.label :stock, class: 'input-group-addon'
+      = f.number_field :stock, class: 'form-control'
+    .field
+      = f.label :image
+      = f.file_field :image
+    .actions
+      = f.submit
