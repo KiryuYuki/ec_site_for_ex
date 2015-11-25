@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :purchase]
+  before_action :authorize!, only: [:new, :destroy, :create, :updata, :edit]
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
+  end
+
+  def count
+    @item_count = Item.count
   end
 
   # GET /items/1
@@ -25,7 +30,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -78,4 +82,12 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :price, :stock, :image)
     end
+
+    def authorize!
+      # redirect_to :root unless current_user.try(:admin)
+      unless current_user && current_user.admin
+          redirect_to :root
+      end
+    end
+
 end

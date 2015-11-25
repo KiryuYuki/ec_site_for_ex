@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'users/history'
+  get 'items/count' => 'items#count'
+  get 'users/count' => 'users#count'
 
   devise_for :users
   resources :items do
