@@ -9,6 +9,19 @@ Rails.application.routes.draw do
       get 'purchase'
     end
   end
+
+  namespace :api, {  format: 'json' } do
+    namespace :v1 do
+      resources :users, only: [:index, :show]
+      resources :sessions, only: [:create, :destroy]
+      resources :items, only: [:index, :show] do
+        member do
+          post :purchase
+        end
+      end
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
